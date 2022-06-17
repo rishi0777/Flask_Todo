@@ -1,0 +1,108 @@
+body{
+    background:rgba(43, 42, 51, 1);
+    color: #FFFFFF;
+    font-family: 'Dosis', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.navbar{
+    flex: 0.05;
+    display: flex;
+}
+.first{
+    flex: 0.025;
+}
+#image_svg{
+    height: 1.8rem;
+    width: 1.8rem;
+}
+.second{
+    flex: 0.9;
+}
+.third{
+    flex: 0.025;
+}
+.collapse_nav_pos{
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    
+}
+.collapse_1{
+    display: flex;
+    flex:0.1;
+    font-weight: bold;
+}
+.collapse_2{
+    flex:0.6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content{
+    flex: 0.8;
+}
+
+.text_user{
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.text{
+    color:#D6DEDE;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.text_entry{
+    color:rgba(43, 42, 51, 1);
+    font-size: 0.9rem;
+}
+.text_sub{
+    color:#FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.text_bt{
+    color:#FFFFFF;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-color:#FFFFFF;
+}
+.table_head{
+    color:#D6DEDE;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.logo{
+    fill:#FFFFFF;
+    height: 1.8rem;
+    width: 1.8rem;
+    transition: 0.4s;
+}
+.logo:hover{
+    fill:#ffc85c;
+}
+
+@media only screen and (max-width: 800px) {
+    html{
+        font-size: 80%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    html{
+        font-size: 60%;
+    }
+}
+@media only screen and (max-width: 415px) {
+    html{
+        font-size: 40%;
+    }
+}
+

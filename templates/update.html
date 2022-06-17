@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block div_content %}
+
+<div class="container my-5">
+    <form method="POST" action="/update/{{todo1.sno}}">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="text">UPDATE TODO</div>
+
+            <div class="form-group">
+                {{ form.todo_title.label(class="form-control-label text_sub my-3") }}
+                {% if form.todo_title.errors %}
+                {{ form.todo_title(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.todo_title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.todo_title(class="form-control form-control-lg text_entry" ,value=todo1.title)}}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.desc.label(class="form-control-label text_sub") }}
+                {% if form.desc.errors %}
+                {{ form.desc(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.desc.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.desc(class="form-control form-control-lg text_entry" ,value=todo1.desc)}}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.update(class="btn btn-outline-danger text_bt") }}
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+{% endblock div_content %}

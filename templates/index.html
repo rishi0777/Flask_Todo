@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block div_content %}
+
+<div class="alert">
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+
+<div class="container">
+    <form method="POST" action="submit">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="text">ADD TODO</div>
+
+            <div class="form-group">
+                {{ form.todo_title.label(class="form-control-label text_sub my-3") }}
+                {% if form.todo_title.errors %}
+                {{ form.todo_title(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.todo_title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.todo_title(class="form-control form-control-lg text_entry") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.desc.label(class="form-control-label text_sub") }}
+                {% if form.desc.errors %}
+                {{ form.desc(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.desc.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.desc(class="form-control form-control-lg text_entry") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-danger text_bt") }}
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<div class="container my-4">
+    <div class="text">YOUR TODOS</div>
+    {% if alltodo|length == 0 %}
+    <div class="alert alert-dark my-3" role="alert">
+        Start adding todos to keep track of your work.
+      </div>
+
+    {% else %}
+    <table class="table table-striped table-dark my-3">
+        <thead class="table_head">
+            <tr>
+                <th scope="col">SNO</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">TIME</th>
+                <th scope="col">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in alltodo %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{todo.title}}</td>
+                <td>{{todo.desc}}</td>
+                <td>{{todo.date_created}}</td>
+                <td>
+                    <a href="/update/{{todo.sno}}"><button type="button"
+                            class="btn btn-info btn-sm ">Update</button></a>
+                    <a href="/delete/{{todo.sno}}"><button type="button"
+                            class="btn btn-danger btn-sm mx-1">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endif %}
+</div>
+{% endblock div_content %}
